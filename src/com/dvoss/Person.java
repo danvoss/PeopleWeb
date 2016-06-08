@@ -4,14 +4,14 @@ package com.dvoss;
  * Created by Dan on 6/8/16.
  */
 public class Person {
-    int id;
+    String id;
     String firstName;
     String lastName;
     String email;
     String country;
     String ipAddress;
 
-    public Person(int id, String firstName, String lastName, String email, String country, String ipAddress) {
+    public Person(String id, String firstName, String lastName, String email, String country, String ipAddress) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,11 +20,11 @@ public class Person {
         this.ipAddress = ipAddress;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
