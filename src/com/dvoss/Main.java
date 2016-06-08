@@ -1,6 +1,5 @@
 package com.dvoss;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.mustache.MustacheTemplateEngine;
@@ -33,22 +32,38 @@ public class Main {
                 (request, response) -> {
                     HashMap m = new HashMap();
 
+                    int offset = 0;
+                    String offsetStr = request.queryParams("offset");
+
+                    if(offsetStr != null) {
+                        offset = Integer.valueOf(offsetStr);
+                    }
+                    int newOffset = offset + 20;
+
                     ArrayList<Person> twenty;
-                    twenty = new ArrayList<>(people.subList(0, 19));
+                    twenty = new ArrayList<>(people.subList(offset, newOffset));
+
                     m.put("people", twenty);
+                    m.put("offsetdown", offset - 20);
+                    m.put("offsetup", offset + 20);
 
                     return new ModelAndView(m, "home.html");
                 },
                 new MustacheTemplateEngine()
         );
-//        Spark.get(
-//                "/person",
-//                (request, response) -> {
-//                    HashMap m = new HashMap();
-//                    m.put("person", people.get(Integer.valueOf()));
-//                },
-//
-//        );
+        Spark.get(
+                "/person",
+                (request, response) -> {
+                    HashMap m = new HashMap();
+                    String pId = request.queryParams("id");
+                    int idNum = Integer.valueOf(pId);
+                    Person person = people.get(idNum-1);
+                    m.put("person", person);
+                    return new ModelAndView(m, "person.html");
+                },
+                new MustacheTemplateEngine()
+
+        );
 
 
     }
