@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PeopleWeb</title>
+</head>
+<body>
+<form>
+    {{#people}}
+    <a href="/person">{{firstName}} {{lastName}}</a><br>
+    {{/people}}
+</form>
+<br>
+<form href="/?offset=20" method="get" style="display:inline-block;">
+    <button type="submit">Previous</button>
+</form>
+<form href="/?offset=20" method="get" style="display:inline-block;">
+    <button type="submit">Next</button>
+</form>
+</body>
+</html>

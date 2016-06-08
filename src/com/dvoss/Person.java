@@ -67,4 +67,9 @@ public class Person {
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
+
+    @Override
+    public String toString() {
+        return id + ", " + firstName + ", " + lastName + ", " + email + ", " + country + ", " + ipAddress;
+    }
 }
