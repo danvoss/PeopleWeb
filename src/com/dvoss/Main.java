@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    //static final int LIMIT = 20; use "LIMIT" instead of "20" below -
+
     static ArrayList<Person> people = new ArrayList<>();
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -56,6 +58,7 @@ public class Main {
                     ArrayList<Person> twenty;
                     twenty = new ArrayList<>(people.subList(offset, offset + 20));
 
+                    //remember ALL Mustache tags must be supplied here:
                     m.put("people", twenty);
                     m.put("offsetdown", offset - 20);
                     m.put("offsetup", offset + 20);
