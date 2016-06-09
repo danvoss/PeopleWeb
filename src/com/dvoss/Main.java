@@ -72,7 +72,7 @@ public class Main {
                     HashMap m = new HashMap();
                     String pId = request.queryParams("id");
                     int idNum = Integer.valueOf(pId);
-                    Person person = people.get(idNum-1);
+                    Person person = people.get(idNum - 1);
                     m.put("person", person);
                     return new ModelAndView(m, "person.html");
                 },
