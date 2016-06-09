@@ -46,7 +46,7 @@ public class Main {
                     else {
                         previous = true;
                     }
-                    if ((offset - 20) > people.size()) {
+                    if ((offset + 20) >= people.size()) {
                         next = false;
                     }
                     else {
