@@ -32,20 +32,29 @@ public class Main {
                 (request, response) -> {
                     HashMap m = new HashMap();
 
+                    boolean previous;
+                    boolean next;
                     int offset = 0;
                     String offsetStr = request.queryParams("offset");
 
                     if(offsetStr != null) {
                         offset = Integer.valueOf(offsetStr);
                     }
-                    int newOffset = offset + 20;
+                    if (offset < 20) {
+                        previous = false;
+                    }
+                    if ((offset - 20) > people.size()) {
+                        next = false;
+                    }
 
                     ArrayList<Person> twenty;
-                    twenty = new ArrayList<>(people.subList(offset, newOffset));
+                    twenty = new ArrayList<>(people.subList(offset, offset + 20));
 
                     m.put("people", twenty);
                     m.put("offsetdown", offset - 20);
                     m.put("offsetup", offset + 20);
+//                    m.put("previous," previous);
+//                    m.put("next", next);
 
                     return new ModelAndView(m, "home.html");
                 },

@@ -5,13 +5,18 @@
     <title>PeopleWeb</title>
 </head>
 <body>
-<form>
     {{#people}}
     <a href="/?personId={{id}}">{{firstName}} {{lastName}}</a><br>
     {{/people}}
-</form>
 <br>
-<a href="/?offset={{offsetdown}}">Previous</a>
-<a href="/?offset={{offsetup}}">Next</a>
+
+{{#previous}}
+<a href="/?offset={{offsetdown}}" style="display:inline-block;">Previous</a>
+{[/previous}}
+
+{{#next}}
+<a href="/?offset={{offsetup}}" style="display:inline-block;">Next</a>
+{{/next}}
+
 </body>
 </html>
