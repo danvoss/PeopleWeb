@@ -43,8 +43,14 @@ public class Main {
                     if (offset < 20) {
                         previous = false;
                     }
+                    else {
+                        previous = true;
+                    }
                     if ((offset - 20) > people.size()) {
                         next = false;
+                    }
+                    else {
+                        next = true;
                     }
 
                     ArrayList<Person> twenty;
@@ -53,8 +59,8 @@ public class Main {
                     m.put("people", twenty);
                     m.put("offsetdown", offset - 20);
                     m.put("offsetup", offset + 20);
-//                    m.put("previous," previous);
-//                    m.put("next", next);
+                    m.put("previous", previous);
+                    m.put("next", next);
 
                     return new ModelAndView(m, "home.html");
                 },
